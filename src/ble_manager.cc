@@ -480,7 +480,7 @@ void BLEManager::OnWrite(IAsyncOperation<GattWriteResult> asyncOp, AsyncStatus s
 {
     if (status == AsyncStatus::Completed)
     {
-        mEmit.Write(uuid, serviceId, characteristicId);
+        mEmit.Write(uuid, serviceId, characteristicId, 'testing');
     }
     else
     {
