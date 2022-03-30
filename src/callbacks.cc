@@ -205,7 +205,7 @@ void Emit::Write(const std::string& uuid, const std::string& serviceUuid,
                  const std::string& characteristicUuid, const std::string& status)
 {
     mCallback->call(
-        [uuid, serviceUuid, characteristicUuid](Napi::Env env, std::vector<napi_value>& args) {
+        [uuid, serviceUuid, characteristicUuid, status](Napi::Env env, std::vector<napi_value>& args) {
             // emit('write', deviceUuid, servicesUuid, characteristicsUuid)
             args = { _s("write"), _u(uuid), _u(serviceUuid), _u(characteristicUuid), _u(status) };
         });
