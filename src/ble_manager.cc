@@ -480,11 +480,25 @@ void BLEManager::OnWrite(IAsyncOperation<GattWriteResult> asyncOp, AsyncStatus s
 {
     if (status == AsyncStatus::Completed)
     {
-        mEmit.Write(uuid, serviceId, characteristicId, 'testing');
+        auto& result = asyncOp.GetResults();
+        if (!result)
+        {
+            mEmit.Write(uuid, serviceId, characteristicId, "failed");
+            return;
+        }
+        auto _commStatus = result.Status();
+        if (_commStatus == GattCommunicationStatus::Success)
+        {
+            mEmit.Write(uuid, serviceId, characteristicId, "");
+            return;
+        }
+        mEmit.Write(uuid, serviceId, characteristicId, "failed");
     }
     else
     {
-        mEmit.Write(uuid, serviceId, characteristicId, status.ToString());
+        LOGE("Async error");
+        // mEmit.Write(uuid, serviceId, characteristicId, asyncOp.GetResults().ProtocolError());
+    //     mEmit.Write(uuid, serviceId, characteristicId, "failed");
     }
 }
 
