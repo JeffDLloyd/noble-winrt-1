@@ -20,7 +20,7 @@ public:
     void IncludedServicesDiscovered(const std::string& uuid, const std::string& serviceUuid, const std::vector<std::string>& serviceUuids);
     void CharacteristicsDiscovered(const std::string& uuid, const std::string& serviceUuid, const std::vector<std::pair<std::string, std::vector<std::string>>>& characteristics);
     void Read(const std::string& uuid, const std::string& serviceUuid, const std::string& characteristicUuid, const Data& data, bool isNotification);
-    void Write(const std::string& uuid, const std::string& serviceUuid, const std::string& characteristicUuid);
+    void Write(const std::string& uuid, const std::string& serviceUuid, const std::string& characteristicUuid, const std::string& status);
     void Notify(const std::string& uuid, const std::string& serviceUuid, const std::string& characteristicUuid, bool state);
     void DescriptorsDiscovered(const std::string& uuid, const std::string& serviceUuid, const std::string& characteristicUuid, const std::vector<std::string>& descriptorUuids);
     void ReadValue(const std::string& uuid, const std::string& serviceUuid, const std::string& characteristicUuid, const std::string& descriptorUuid, const Data& data);
