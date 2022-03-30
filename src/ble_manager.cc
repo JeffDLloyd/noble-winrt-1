@@ -484,7 +484,7 @@ void BLEManager::OnWrite(IAsyncOperation<GattWriteResult> asyncOp, AsyncStatus s
     }
     else
     {
-        mEmit.Write(uuid, serviceId, characteristicId, status);
+        mEmit.Write(uuid, serviceId, characteristicId, status.ToString());
     }
 }
 
